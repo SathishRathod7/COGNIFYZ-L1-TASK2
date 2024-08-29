@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df=pd.read_csv('/content/Dataset .csv')
+df
+
+numerical_stats = df.describe()
+print(numerical_stats)
+
+plt.figure(figsize=(10, 6))
+sns.countplot(y='Country Code', data=df, order=df['Country Code'].value_counts().index)
+plt.title('Distribution of Country Codes')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.countplot(y='City', data=df, order=df['City'].value_counts().index[:10])
+plt.title('Top 10 Cities')
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.countplot(y='Cuisines', data=df, order=df['Cuisines'].value_counts().index[:10])
+plt.title('Top 10 Cuisines')
+plt.show()
+
+top_cuisines = df['Cuisines'].value_counts().head(10)
+print(top_cuisines)
+top_cities = df['City'].value_counts().head(10)
+print(top_cities)
